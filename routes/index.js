@@ -2,15 +2,15 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  criarUsuario,
-  buscarTodosUsuarios,
-  editarUsuario,
-  deletarUsuario,
-} = require("../controllers/usuarioCtrl");
+  criarPokemon,
+  buscarTodosPokemons,
+  editarPokemon,
+  deletarPokemon,
+} = require("../controllers/pokemonCtrl");
 
-router.post("/usuario", criarUsuario);
-router.get("/usuario", buscarTodosUsuarios);
-router.put("/usuario/:id", editarUsuario);
-router.delete("/usuario/:id", deletarUsuario);
+router.post("/pokemon", criarPokemon);
+router.get("/pokemon", buscarTodosPokemons);
+router.put("/pokemon/:id", editarPokemon);
+router.delete("/pokemon/:id", deletarPokemon);
 
 module.exports = router;

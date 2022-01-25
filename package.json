@@ -4,16 +4,22 @@
   "description": "Node-Template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jordaoqualho/Node-Template.git"
   },
-  "author": "Jordão Qualho",
+  "author": "Kailon",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jordaoqualho/Node-Template/issues"
   },
-  "homepage": "https://github.com/jordaoqualho/Node-Template#readme"
+  "homepage": "https://github.com/jordaoqualho/Node-Template#readme",
+  "dependencies": {
+    "dotenv": "^14.3.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8",
+    "nodemon": "^2.0.15"
+  }
 }

@@ -10,7 +10,7 @@ dotenv.config();
 app.use(express.json());
 
 mongoose
-  .connect(process.env.PORTA_MONGO, {
+  .connect(process.env.URL_MONGO, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
