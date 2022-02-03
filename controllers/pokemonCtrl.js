@@ -21,15 +21,24 @@ const criarPokemon = (req, res) => {
 };
 
 const buscarTodosPokemons = async (req, res) => {
-  Pokemon.find({}, (err, pokemons) => {
-    if (err) {
-      return res.status(400).json({ sucesso: false, error: err });
-    }
+  let termoDeBusca = {};
 
-    return res.status(200).json({ sucesso: true, pokemons: pokemons });
-  }).catch((err) => console.log(err));
+  if (req.query.nome) {
+    termoDeBusca = {
+      nome: { $regex: req.query.nome, $options: "i" },
+    };
+  }
+
+  await Pokemon.find(termoDeBusca)
+    .then((pokemons) => {
+      return res.status(200).json({ sucesso: true, pokemons: pokemons });
+    })
+    .catch((error) => {
+      if (error) {
+        return res.status(400).json({ sucesso: false, error: error });
+      }
+    });
 };
-
 const editarPokemon = async (req, res) => {
   Pokemon.findOneAndUpdate({ _id: req.params.id }, req.body, (err, pokemon) => {
     if (err) {
@@ -76,9 +85,33 @@ const deletarPokemon = async (req, res) => {
   });
 };
 
+const deletarTodosPokemons = async (req, res) => {
+  Pokemon.deleteMany((err, pokemon) => {
+    if (err) {
+      return res.status(400).json({
+        sucesso: false,
+        error: err,
+      });
+    }
+
+    if (!pokemon) {
+      return res
+        .status(404)
+        .json({ sucesso: false, error: `Pokemon não encontrado` });
+    }
+
+    return res.status(200).json({
+      sucesso: true,
+      id: pokemon._id,
+      message: "Pokemon deletado!",
+    });
+  });
+};
+
 module.exports = {
   criarPokemon,
   buscarTodosPokemons,
   editarPokemon,
   deletarPokemon,
+  deletarTodosPokemons,
 };
