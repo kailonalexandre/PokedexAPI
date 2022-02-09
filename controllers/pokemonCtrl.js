@@ -107,6 +107,26 @@ const deletarTodosPokemons = async (req, res) => {
     });
   });
 };
+const criarVariosPokemons = async (req, res) => {
+  const listaDePokemons = req.body;
+  var contador = 0;
+
+  for (const pokemon of listaDePokemons) {
+    await new Pokemon(pokemon)
+      .save()
+      .then(() => {
+        contador++;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  return res.status(200).json({
+    sucesso: true,
+    mensagem: `${contador} de ${listaDePokemons.length} foram cadastrados no banco!`,
+  });
+};
 
 module.exports = {
   criarPokemon,
@@ -114,4 +134,5 @@ module.exports = {
   editarPokemon,
   deletarPokemon,
   deletarTodosPokemons,
+  criarVariosPokemons,
 };
