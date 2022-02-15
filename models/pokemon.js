@@ -11,7 +11,7 @@ const Status = new Schema({
 });
 
 const Evolucoes = new Schema({
-  idDaEvolucao: { type: String },
+  numeroDoPokemon: { type: String },
   grau: { type: Number },
 });
 

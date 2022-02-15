@@ -116,10 +116,9 @@ const criarVariosPokemons = async (req, res) => {
       .save()
       .then(() => {
         contador++;
+        console.log(`${pokemon.nome} foi cadastrado!`);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }
 
   return res.status(200).json({
