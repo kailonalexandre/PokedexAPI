@@ -23,6 +23,7 @@
     "express": "^4.17.2",
     "mongoose": "^6.1.8",
     "nodemon": "^2.0.15",
+    "powershell": "^2.3.2",
     "translate": "^1.4.1"
   }
 }
