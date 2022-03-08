@@ -23,7 +23,7 @@ const Pokemon = new Schema({
   altura: { type: Number },
   peso: { type: Number },
   passiva: { type: String },
-  fraqueza: [{ type: String }],
+  fraquezas: [{ type: String }],
   tipo: [{ type: String }],
   status: Status,
   evolucoes: [Evolucoes],
